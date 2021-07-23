@@ -1,5 +1,5 @@
 import { Component, useEffect } from 'react'
-
+import SimpleRatin from "./stars";
 import React from 'react'
 import api from '../api';
 
@@ -11,9 +11,14 @@ class Home extends Component{
     }
 
     async componentDidMount(){
-        const response = await api.get('');
-        // console.log(response.data)
-        this.setState({livros: response.data});
+        try{
+            const response = await api.get('');
+            // console.log(response.data)
+            this.setState({livros: response.data});
+        }catch(error){
+            console.error(error);
+        }
+        
     }
 
     render(){
@@ -22,14 +27,14 @@ class Home extends Component{
         return(
             <div>
                 <h1>Lista</h1>
-                {livros.map(livro =>(
-                    <li key={livro.id}>
-                        <h2><strong>Título:</strong>
-                        {livro.title}
-                        </h2>
-                        <h2><strong>thumbnail:</strong>
-                        <img src={livro.thumbnail}></img>
-                        </h2>
+                {livros.map(user =>(
+                    <li key={user.id}>
+                        <img src={user.thumbnail}></img>
+                        <p>{user.title}</p>
+                        <p>Autor</p>
+                        <SimpleRatin></SimpleRatin>
+                        <p>{user.description}</p>
+                        <p>{user.value}</p>
                     </li>
                 ))}
             </div>

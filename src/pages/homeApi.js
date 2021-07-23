@@ -17,30 +17,26 @@ function HomeApi() {
         .then((response)=>{
         setLivros(response.data);
         })
-    },[])
+    })
 
-    useEffect(()=>{
-        const requestOptions = {
-            method: 'POST',
-            headers:{'Content-Type':'application/json'},
-            body: JSON.stringify({title:'Exemplos de react post'})
-        };
-        fetch('http://localhost:3333/episodes', requestOptions)
-        .then(response => response.json())
-        .then(data => setLivros(data.id))
-    },[])
+    // Primeira tentativa
 
+    // useEffect(()=>{
+    //     const requestOptions = {
+    //         method: 'POST',
+    //         headers:{'Content-Type':'application/json'},
+    //         body: JSON.stringify({title:'Exemplos de react post'})
+    //     };
+    //     fetch('http://localhost:3333/episodes', requestOptions)
+    //     .then(response => response.json())
+    //     .then(data => setLivros(data.id))
+    // },[])
+
+    const [novoLivro, setNovoLivro] = useState();
     function NovoLivro(){
-        useEffect(()=>{
-            const requestOptions = {
-                method: 'POST',
-                headers:{'Content-Type':'application/json'},
-                body: JSON.stringify({title:'Exemplos de react post'})
-            };
-            fetch('http://localhost:3333/episodes', requestOptions)
-            .then(response => response.json())
-            .then(data => setLivros(data.id))
-        },[])
+        const novoLivro = {title: 'teste 2'};
+        axios.post('http://localhost:3333/episodes',novoLivro)
+        .then(response => setNovoLivro(response.data.id))
     }
     
     
@@ -54,7 +50,7 @@ function HomeApi() {
 
 
         <div>
-            <h1>Lista de livros</h1>
+            <h1>Lista de livros HomeAPI</h1>
             <button type="submit" onClick={navegate}>Adicionar Livro</button>
 
             
@@ -65,7 +61,7 @@ function HomeApi() {
                  <input type="text" name ="nome" placeholder="Nome Livro"></input>
                  <input type="text" name ="descricao"placeholder="descrição"></input>
                  <input type="text" name ="valor" placeholder="valor"></input>
-                 <button type="submit" onClick={NovoLivro}>Salvar</button>
+                 <button type="submit" onClick={NovoLivro}>NOVO LIVRO</button>
                 </div>
             </div>
 
