@@ -1,85 +1,71 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import {useHistory} from 'react-router-dom'
-
 import React from 'react'
-import axios from 'axios';
-
-import SimpleRatin from "./stars";
-
+import styles from '../styles/IndexStyle.module.scss'
+import SimpleRatin from "./ComponentsUI/stars";
+import api from '../api';
+import { playerContext } from './ComponentsUI/comtext/playerContext';
+import {EditFilled, DeleteFilled} from '@ant-design/icons';
 
 function HomeApi() {
+
+    const {excluir} = useContext(playerContext);
 
     const history = useHistory();
     const [livros, setLivros] = useState([]);
 
     useEffect(()=>{
-        axios.get('http://localhost:3333/episodes')
-        .then((response)=>{
-        setLivros(response.data);
-        })
-    })
+        try{
+            api.get(`episodes`)
+            .then((response)=>{
+            setLivros(response.data);
+            })
+        }catch(error){
+            console.error(error);
+        }
+        
 
-    // Primeira tentativa
+    },[])
 
-    // useEffect(()=>{
-    //     const requestOptions = {
-    //         method: 'POST',
-    //         headers:{'Content-Type':'application/json'},
-    //         body: JSON.stringify({title:'Exemplos de react post'})
-    //     };
-    //     fetch('http://localhost:3333/episodes', requestOptions)
-    //     .then(response => response.json())
-    //     .then(data => setLivros(data.id))
-    // },[])
-
-    const [novoLivro, setNovoLivro] = useState();
-    function NovoLivro(){
-        const novoLivro = {title: 'teste 2'};
-        axios.post('http://localhost:3333/episodes',novoLivro)
-        .then(response => setNovoLivro(response.data.id))
-    }
-    
-    
-
-    
     function navegate(){
         history.push('/novoLivro')
     }
+
     return (
-
-
-
         <div>
             <h1>Lista de livros HomeAPI</h1>
             <button type="submit" onClick={navegate}>Adicionar Livro</button>
-
-            
-            <div style={{background:"red", marginBottom:"1rem"}}>
-                <h3>Novo livro</h3>
-                <div>
-                 <input type="file" name ="img" placeholder="Imagem"></input>
-                 <input type="text" name ="nome" placeholder="Nome Livro"></input>
-                 <input type="text" name ="descricao"placeholder="descrição"></input>
-                 <input type="text" name ="valor" placeholder="valor"></input>
-                 <button type="submit" onClick={NovoLivro}>NOVO LIVRO</button>
-                </div>
-            </div>
-
-
-
-
-
-            
-            {livros.map(user =>(
-                    <li key={user.id}>
-                        <img src={user.thumbnail}></img>
-                        <p>{user.title}</p>
-                        <p>Autor</p>
-                        <SimpleRatin></SimpleRatin>
-                        <p>{user.description}</p>
-                        <p>{user.value}</p>
+            <div style={{width: '100%', height: '100vh', display: 'flex'}}>
+            {livros.map(user =>{
+                return(
+                    <div className={styles.containerFull}>
+                    <li key={user.id} style={{listStyleType:'none'}}>
+                        <div className={styles.container}>
+                            <div style={{textAlign: 'center'}}>
+                                <img src={user.thumbnail}></img>
+                            </div>
+                            <div className={styles.quebrandoLinhas}>
+                                <p style={{fontWeight:'800'}}>{user.title}</p>
+                            </div>
+                            <div className={styles.quebrandoLinhas}>
+                                <p>{user.members}</p>
+                            </div>
+                            <SimpleRatin></SimpleRatin>
+                            <div className={styles.quebrandoLinhas}>
+                                <p>{user.description}</p>
+                            </div>
+                            <p>{user.value}</p>
+                            <button onClick={()=>excluir(user.id)}><DeleteFilled /></button>
+                            <button><EditFilled /></button>
+                        </div>
+                        
                     </li>
-                ))}
+                    
+                    
+                    </div>
+                );
+            })}
+            </div>
         </div>
     );
 

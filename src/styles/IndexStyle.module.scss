@@ -1,0 +1,53 @@
+.containerFull{
+    background: red;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    position: relative;
+    li{
+        white-space:normal;
+        background: black;
+        width:99%;
+        height:70vh;
+        
+    }
+    .container{
+        white-space:normal;
+        width: 100%;
+        height:70vh;
+        background:green;
+        flex-wrap: wrap;
+        div{
+            background: rgb(245, 198, 198);
+            img{
+                width: 40%;
+            }
+            p::after{
+                content: '...';
+                position: absolute;
+                right: 0;
+                bottom: 0;
+            }
+        }
+        p{  
+            position:relative;
+            height:20px;
+            font-size:12px;
+            font-weight: 600;
+            padding-right: 0.5rem;
+            padding-left: 0.5rem;
+            white-space: normal;
+            overflow: hidden !important;
+            text-overflow: ellipsis;
+        }
+    }
+}
+
+.quebrandoLinhas{
+    background: greenyellow;
+    white-space:normal;
+    p{
+        height: 100%;
+        background: rgb(34, 34, 197);
+    }
+}
