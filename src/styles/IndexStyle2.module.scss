@@ -1,0 +1,52 @@
+
+.containerGeral{
+    background: red;
+    flex:0 0 auto;
+    width: 100%;
+    word-wrap:break-word; 
+    white-space:normal;
+
+    display:flex;
+    flex-wrap: wrap;
+}
+.ReturnMap{
+    flex:0 0 auto;
+    // width: 20%;
+    width: 269.8px;
+}
+.Col{
+    background:blue;
+    border: solid 1px #000;
+}
+
+.container{
+    width: 100%;
+    background:green;
+    cursor: pointer;
+    div{
+        background: rgb(245, 198, 198);
+        img{
+            width: 40%;
+        }
+    }
+    p{  
+        height:20px;
+        font-size:12px;
+        font-weight: 600;
+        padding-right: 0.5rem;
+        padding-left: 0.5rem;
+        white-space: normal;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+.quebrandoLinhas{
+    p{
+        background: rgb(0, 0, 255);
+        margin-bottom: 3px;
+    }
+}
+
+//----------------------------------------------//
+

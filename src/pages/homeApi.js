@@ -35,7 +35,7 @@ function HomeApi() {
         <div>
             <h1>Lista de livros HomeAPI</h1>
             <button type="submit" onClick={navegate}>Adicionar Livro</button>
-            <div style={{width: '100%', height: '100vh', display: 'flex'}}>
+            <div style={{maxWidth: '210px',wordWrap:'break-word', height: '200vh', display: 'flex'}}>
             {livros.map(user =>{
                 return(
                     <div className={styles.containerFull}>
@@ -57,19 +57,14 @@ function HomeApi() {
                             <p>{user.value}</p>
                             <button onClick={()=>excluir(user.id)}><DeleteFilled /></button>
                             <button><EditFilled /></button>
-                        </div>
-                        
-                    </li>
-                    
-                    
+                        </div>                  
+                    </li>          
                     </div>
                 );
             })}
             </div>
         </div>
     );
-
-
   }
 
   export default HomeApi;
