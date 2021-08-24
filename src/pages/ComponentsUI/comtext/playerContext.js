@@ -14,14 +14,14 @@ export default function PlayerContextProvider({children}){
                     'My-Custom-Header': 'foobar'
                 }
             }).then(document.location.reload(true));
-            
         }
-
 };
-
+    function editar () {
+        alert('ainda em produção');
+    }
 
 return(
-    <playerContext.Provider value={{excluir}}>
+    <playerContext.Provider value={{excluir, editar}}>
         {children}
     </playerContext.Provider>
         );

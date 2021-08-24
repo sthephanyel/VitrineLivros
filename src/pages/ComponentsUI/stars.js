@@ -1,23 +1,13 @@
 import React from 'react';
-import Rating from '@material-ui/lab/Rating';
-import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
+import 'antd/dist/antd.css';
+import { Rate } from 'antd';
 
-export default function SimpleRating() {
-  const [value, setValue] = React.useState(2);
+// ReactDOM.render(<Rate allowHalf defaultValue={2.5} />, document.getElementById('container'));
 
-  return (
-    <div>
-      <Box component="fieldset" mb={3} borderColor="transparent">
-        <Typography component="legend"></Typography>
-        <Rating
-          name="simple-controlled"
-          value={value}
-          onChange={(event, newValue) => {
-            setValue(newValue);
-          }}
-        />
-      </Box>
-    </div>
+export default function Stars(){
+  return(
+    <>
+      <Rate allowHalf defaultValue={2.5} />
+    </>
   );
 }

@@ -1,6 +1,6 @@
 
 .containerGeral{
-    background: red;
+    background: rgb(255, 255, 255);
     flex:0 0 auto;
     width: 100%;
     word-wrap:break-word; 
@@ -15,17 +15,18 @@
     width: 269.8px;
 }
 .Col{
-    background:blue;
-    border: solid 1px #000;
+    background:rgb(231, 231, 231);
+    border: solid 1px rgb(155, 155, 155);
 }
 
 .container{
     width: 100%;
-    background:green;
     cursor: pointer;
     div{
-        background: rgb(245, 198, 198);
+        background: transparent;
         img{
+            margin-top: 2rem;
+            margin-bottom: 0.5rem;
             width: 40%;
         }
     }
@@ -43,7 +44,7 @@
 
 .quebrandoLinhas{
     p{
-        background: rgb(0, 0, 255);
+        background: rgb(231, 231, 231);
         margin-bottom: 3px;
     }
 }
