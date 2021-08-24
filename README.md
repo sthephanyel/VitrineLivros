@@ -2,7 +2,10 @@
 </br>
 Objetivo é criar uma vitrine simples de livros com conexão a uma API, usando server.json pra simular uma API real.
 </br>
-Nessa vitrine terá um CRUD onde permitirá o usuário adicionar, excluir ou alterar as informações de um livro de sua escolha 
+Nessa vitrine terá um CRUD onde permitirá o usuário adicionar, excluir ou alterar as informações de um livro de sua escolha.
+</br>
+</br>
+O projeto ainda está em processo de finalização.
 </br>
 </br>
 
